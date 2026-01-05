@@ -37,7 +37,7 @@ export default function RainCanvas() {
                 y: Math.random() * canvas.height,
                 length: Math.random() * 8 + 4,
                 speed: Math.random() * 12 + 6,
-                opacity: Math.random() * 0.3 + 0.3
+                opacity: Math.random() * 0.2 + 0.1
             }))
         }
 
