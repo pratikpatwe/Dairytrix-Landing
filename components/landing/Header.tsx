@@ -7,6 +7,17 @@ import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+import React from "react"
+
 const navItems = [
     { name: "About", href: "#about" },
     { name: "Pricing", href: "#pricing" },
@@ -17,6 +28,7 @@ const navItems = [
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [hoveredProduct, setHoveredProduct] = useState<"app" | "bridge">("bridge")
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,23 +57,82 @@ export default function Header() {
                         height={32}
                         className="w-8 h-8"
                     />
-                    <span className="font-bold text-zinc-900 tracking-tight text-lg hidden sm:block">Dairytrix</span>
+                    <span className="font-bold text-zinc-900 tracking-tight text-lg">Dairytrix</span>
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-6">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className="text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors uppercase tracking-widest"
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
+                <div className="hidden md:flex items-center gap-2">
+                    <NavigationMenu>
+                        <NavigationMenuList>
+                            <NavigationMenuItem>
+                                <NavigationMenuTrigger className="bg-transparent hover:bg-zinc-100 data-[state=open]:bg-zinc-100 text-xs font-semibold text-zinc-500 hover:text-zinc-900 uppercase tracking-widest focus:bg-zinc-100 cursor-pointer rounded-full px-5 h-10 transition-colors">
+                                    Products
+                                </NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <div className="flex md:w-[420px] lg:w-[460px] p-2 gap-2">
+                                        {/* Left Side: Square Preview Only */}
+                                        <div className="w-[42%] relative aspect-square rounded-[1rem] overflow-hidden group">
+                                            <Image
+                                                src={hoveredProduct === 'app' ? "/logo.svg" : "/bridge.svg"}
+                                                alt="Product Preview"
+                                                fill
+                                                className={cn(
+                                                    "transition-all duration-500 ease-in-out",
+                                                    hoveredProduct === 'app' ? "object-contain p-2" : "object-cover scale-105 group-hover:scale-100"
+                                                )}
+                                                onError={(e) => {
+                                                    (e.target as HTMLImageElement).src = "/logo.svg"
+                                                }}
+                                            />
+                                        </div>
+
+                                        {/* Right Side: Product Options */}
+                                        <div className="flex-1 flex flex-col justify-center gap-1 pl-1">
+                                            <ListItem
+                                                title="Dairytrix Bridge"
+                                                href="#bridge"
+                                                onMouseEnter={() => setHoveredProduct('bridge')}
+                                                className={cn(
+                                                    "transition-all duration-200 py-3",
+                                                    hoveredProduct === 'bridge' ? "bg-zinc-50" : "hover:bg-zinc-50/50"
+                                                )}
+                                            >
+                                                IoT hardware for analyzer sync.
+                                            </ListItem>
+                                            <ListItem
+                                                title="Dairytrix App"
+                                                href="#app"
+                                                onMouseEnter={() => setHoveredProduct('app')}
+                                                className={cn(
+                                                    "transition-all duration-200 py-3",
+                                                    hoveredProduct === 'app' ? "bg-zinc-50" : "hover:bg-zinc-50/50"
+                                                )}
+                                            >
+                                                Mobile & desktop ecosystem.
+                                            </ListItem>
+                                        </div>
+                                    </div>
+                                </NavigationMenuContent>
+                            </NavigationMenuItem>
+
+                            {navItems.map((item) => (
+                                <NavigationMenuItem key={item.name}>
+                                    <Link href={item.href} legacyBehavior passHref>
+                                        <NavigationMenuLink className={cn(
+                                            navigationMenuTriggerStyle(),
+                                            "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent",
+                                            "text-xs font-semibold text-zinc-500 hover:text-zinc-900 uppercase tracking-widest px-3"
+                                        )}>
+                                            {item.name}
+                                        </NavigationMenuLink>
+                                    </Link>
+                                </NavigationMenuItem>
+                            ))}
+                        </NavigationMenuList>
+                    </NavigationMenu>
                     <Link
                         href="#download"
-                        className="px-5 py-2 bg-zinc-900 text-white text-xs font-bold rounded-full hover:bg-zinc-800 transition-all shadow-md"
+                        className="ml-2 px-5 py-2 bg-zinc-900 text-white text-xs font-bold rounded-full hover:bg-zinc-800 transition-all shadow-md active:scale-95"
                     >
                         GET APP
                     </Link>
@@ -82,6 +153,28 @@ export default function Header() {
                 isMenuOpen ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-2 pointer-events-none"
             )}>
                 <div className="flex flex-col gap-1">
+                    <div className="px-5 py-3 pt-4">
+                        <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Products</span>
+                    </div>
+                    <Link
+                        href="#app"
+                        className="flex flex-col gap-0.5 px-5 py-3 hover:bg-black/[0.03] rounded-[1.5rem] transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        <span className="text-sm font-semibold text-zinc-900">Dairytrix App</span>
+                        <span className="text-[11px] text-zinc-500">Mobile and Desktop Platform</span>
+                    </Link>
+                    <Link
+                        href="#bridge"
+                        className="flex flex-col gap-0.5 px-5 py-3 hover:bg-black/[0.03] rounded-[1.5rem] transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        <span className="text-sm font-semibold text-zinc-900">Dairytrix Bridge</span>
+                        <span className="text-[11px] text-zinc-500">Smart IoT Hardware Device</span>
+                    </Link>
+
+                    <div className="my-2 border-t border-zinc-100/50" />
+
                     {navItems.map((item) => (
                         <Link
                             key={item.name}
@@ -101,6 +194,31 @@ export default function Header() {
                     </Link>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
+
+const ListItem = React.forwardRef<
+    React.ElementRef<"a">,
+    React.ComponentPropsWithoutRef<"a"> & { title: string }
+>(({ className, title, children, ...props }, ref) => {
+    return (
+        <NavigationMenuLink asChild>
+            <a
+                ref={ref}
+                className={cn(
+                    "block select-none space-y-1 rounded-[1rem] p-3 leading-none no-underline outline-none transition-all duration-200",
+                    "hover:bg-zinc-50 hover:text-zinc-900 focus:bg-zinc-50 focus:text-zinc-900",
+                    className
+                )}
+                {...props}
+            >
+                <div className="text-sm font-bold tracking-tight text-zinc-900">{title}</div>
+                <p className="line-clamp-2 text-xs leading-snug text-zinc-500 font-medium">
+                    {children}
+                </p>
+            </a>
+        </NavigationMenuLink>
+    )
+})
+ListItem.displayName = "ListItem"
