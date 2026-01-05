@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans"
 import { Instrument_Serif } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Download } from "lucide-react"
+import BirdsCanvas from "./BirdsCanvas"
 
 const instrumentSerif = Instrument_Serif({
     subsets: ["latin"],
@@ -23,6 +24,9 @@ export default function Hero() {
 
             {/* Subtle Overlay */}
             <div className="absolute inset-0 bg-black/[0.01]" />
+
+            {/* Interactive Minimal Birds */}
+            <BirdsCanvas />
 
             {/* Main Hero Container - Centered on mobile, top-aligned and centered block on desktop */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-0 flex flex-col md:flex-row items-center md:items-start justify-center gap-2 md:gap-20 lg:gap-24">

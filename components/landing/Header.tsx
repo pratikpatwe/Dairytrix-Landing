@@ -117,15 +117,15 @@ export default function Header() {
 
                             {navItems.map((item) => (
                                 <NavigationMenuItem key={item.name}>
-                                    <Link href={item.href} legacyBehavior passHref>
-                                        <NavigationMenuLink className={cn(
+                                    <NavigationMenuLink asChild>
+                                        <Link href={item.href} className={cn(
                                             navigationMenuTriggerStyle(),
                                             "bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent",
                                             "text-xs font-semibold text-zinc-500 hover:text-zinc-900 uppercase tracking-widest px-3"
                                         )}>
                                             {item.name}
-                                        </NavigationMenuLink>
-                                    </Link>
+                                        </Link>
+                                    </NavigationMenuLink>
                                 </NavigationMenuItem>
                             ))}
                         </NavigationMenuList>
