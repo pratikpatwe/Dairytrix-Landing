@@ -5,6 +5,7 @@ import Image from "next/image"
 import { GeistSans } from "geist/font/sans"
 import { cn } from "@/lib/utils"
 import { Youtube } from "lucide-react"
+import RainCanvas from "./RainCanvas"
 
 const footerLinks = {
     product: [
@@ -34,9 +35,12 @@ export default function Footer() {
                     src="/footer-bg.svg"
                     alt="Footer Background"
                     fill
-                    className="object-cover object-top blur-[1px] opacity-70"
+                    className="object-cover object-top blur-[2px] opacity-100"
                 />
             </div>
+
+            {/* Ambient Rain Animation */}
+            <RainCanvas />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
