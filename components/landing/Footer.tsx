@@ -76,7 +76,7 @@ export default function Footer() {
                     <div className="hidden md:block col-span-1" />
 
                     {/* Resources Column */}
-                    <div className="col-span-1 md:col-span-1 flex flex-col gap-4">
+                    <div className="col-span-1 md:col-span-1 flex flex-col gap-4 pl-8 md:pl-0">
                         <h4 className="text-[10px] font-extrabold text-black uppercase tracking-widest">Resources</h4>
                         <div className="flex flex-col gap-3">
                             {footerLinks.company.map((link) => (
