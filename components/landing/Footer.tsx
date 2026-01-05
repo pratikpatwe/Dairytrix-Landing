@@ -29,15 +29,17 @@ export default function Footer() {
             GeistSans.className
         )}>
             {/* Background Image */}
-            <img
-                src="/footer-bg.svg"
-                alt="Footer Background"
-                className="absolute top-0 left-0 w-full h-full object-cover object-top blur-[1px] opacity-70 pointer-events-none"
-            />
+            <div className="absolute inset-0 pointer-events-none">
+                <Image
+                    src="/footer-bg.svg"
+                    alt="Footer Background"
+                    fill
+                    className="object-cover object-top blur-[1px] opacity-70"
+                />
+            </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
-
                     {/* Brand Column */}
                     <div className="col-span-2 md:col-span-1 flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2 w-fit">
@@ -120,13 +122,15 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Foreground Image - Layered behind text but above bg */}
             {/* Foreground Image - Layered on top of everything including bottom bar */}
-            <img
-                src="/footer-foreground.svg"
-                alt="Footer Foreground"
-                className="absolute top-0 left-0 w-full h-full object-cover object-top pointer-events-none z-20"
-            />
+            <div className="absolute inset-0 pointer-events-none z-20">
+                <Image
+                    src="/footer-foreground.svg"
+                    alt="Footer Foreground"
+                    fill
+                    className="object-cover object-top"
+                />
+            </div>
         </footer>
     )
 }

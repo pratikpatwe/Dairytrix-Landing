@@ -1,5 +1,6 @@
 import Hero from "../components/landing/Hero";
 import Header from "../components/landing/Header";
+import FAQ from "../components/landing/FAQ";
 import Footer from "../components/landing/Footer";
 
 export default function Home() {
@@ -9,8 +10,7 @@ export default function Home() {
       <div className="relative">
         <Hero />
       </div>
-      {/* Spacer to allow scrolling on the page but keeping Hero at screen height */}
-      <div className="h-[100vh]" />
+      <FAQ />
       <Footer />
     </main>
   );

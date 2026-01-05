@@ -3,6 +3,7 @@ import { Instrument_Serif } from "next/font/google"
 import { cn } from "@/lib/utils"
 import { Download } from "lucide-react"
 import BirdsCanvas from "./BirdsCanvas"
+import Image from "next/image"
 
 const instrumentSerif = Instrument_Serif({
     subsets: ["latin"],
@@ -15,12 +16,16 @@ export default function Hero() {
             "relative min-h-screen w-full flex items-center justify-center overflow-hidden",
             GeistSans.className
         )}>
-            {/* Background Image */}
-            <img
-                src="/hero-bg.svg"
-                alt="Background"
-                className="absolute bottom-0 left-0 w-full h-auto min-h-full object-cover object-left-bottom md:object-bottom blur-[2px] opacity-95"
-            />
+            {/* Background Image - Priority Loading */}
+            <div className="absolute inset-0 pointer-events-none">
+                <Image
+                    src="/hero-bg.svg"
+                    alt="Background"
+                    fill
+                    priority
+                    className="object-cover object-left-bottom md:object-bottom blur-[2px] opacity-95"
+                />
+            </div>
 
             {/* Subtle Overlay */}
             <div className="absolute inset-0 bg-black/[0.01]" />
@@ -51,9 +56,12 @@ export default function Hero() {
                 <div className="flex flex-col items-center gap-0 md:gap-8 animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
                     {/* Responsive Image Size - Hidden on mobile */}
                     <div className="hidden md:block relative md:w-[200px] lg:w-[220px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
-                        <img
+                        <Image
                             src="/phone-frame.svg"
                             alt="App Screenshot"
+                            width={220}
+                            height={450}
+                            priority
                             className="w-full h-auto rounded-[2rem]"
                         />
                     </div>
@@ -70,11 +78,15 @@ export default function Hero() {
             </div>
 
             {/* Foreground Image - Layered on top of heading and content */}
-            <img
-                src="/foreground.svg"
-                alt="Foreground"
-                className="absolute bottom-0 left-0 w-full h-auto min-h-full object-cover object-left-bottom md:object-bottom pointer-events-none z-20"
-            />
+            <div className="absolute inset-0 pointer-events-none z-20">
+                <Image
+                    src="/foreground.svg"
+                    alt="Foreground"
+                    fill
+                    priority
+                    className="object-cover object-left-bottom md:object-bottom"
+                />
+            </div>
         </section>
     )
 }
