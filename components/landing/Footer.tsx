@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
+
 import { GeistSans } from "geist/font/sans"
 import { cn } from "@/lib/utils"
 import { Youtube } from "lucide-react"
@@ -30,14 +30,11 @@ export default function Footer() {
             GeistSans.className
         )}>
             {/* Background Image */}
-            <div className="absolute inset-0 pointer-events-none">
-                <Image
-                    src="/footer-bg.svg"
-                    alt="Footer Background"
-                    fill
-                    className="object-cover object-top blur-[2px] opacity-100"
-                />
-            </div>
+            <img
+                src="/footer-bg.svg"
+                alt="Footer Background"
+                className="absolute inset-0 w-full h-full object-cover object-top blur-[2px] opacity-100 pointer-events-none"
+            />
 
             {/* Ambient Rain Animation */}
             <RainCanvas />
@@ -47,29 +44,27 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="col-span-2 md:col-span-1 flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2 w-fit">
-                            <Image
+                            <img
                                 src="/logo.svg"
                                 alt="Dairytrix Logo"
-                                width={30}
-                                height={30}
                                 className="w-7 h-7"
                             />
                             <span className="font-bold text-zinc-900 tracking-tight text-xl">Dairytrix</span>
                         </Link>
-                        <p className="text-zinc-800 text-sm leading-relaxed max-w-[200px] font-medium">
+                        <p className="text-zinc-950 text-sm leading-relaxed max-w-[200px] font-semibold">
                             Redefining dairy management with smart IoT hardware and powerful software.
                         </p>
                     </div>
 
                     {/* Solutions Column */}
                     <div className="col-span-1 md:col-span-1 flex flex-col gap-4">
-                        <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Solutions</h4>
+                        <h4 className="text-[10px] font-extrabold text-black uppercase tracking-widest">Solutions</h4>
                         <div className="flex flex-col gap-3">
                             {footerLinks.product.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
+                                    className="text-sm text-zinc-950 hover:text-black transition-colors w-fit font-semibold"
                                 >
                                     {link.name}
                                 </Link>
@@ -82,13 +77,13 @@ export default function Footer() {
 
                     {/* Resources Column */}
                     <div className="col-span-1 md:col-span-1 flex flex-col gap-4">
-                        <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Resources</h4>
+                        <h4 className="text-[10px] font-extrabold text-black uppercase tracking-widest">Resources</h4>
                         <div className="flex flex-col gap-3">
                             {footerLinks.company.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
+                                    className="text-sm text-zinc-950 hover:text-black transition-colors w-fit font-semibold"
                                 >
                                     {link.name}
                                 </Link>
@@ -99,13 +94,13 @@ export default function Footer() {
                     {/* Social Column */}
                     <div className="col-span-2 md:col-span-1 flex flex-col gap-6">
                         <div className="flex flex-col gap-4">
-                            <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Connect</h4>
+                            <h4 className="text-[10px] font-extrabold text-black uppercase tracking-widest">Connect</h4>
                             <div className="flex gap-4">
                                 {footerLinks.social.map((social) => (
                                     <Link
                                         key={social.name}
                                         href={social.href}
-                                        className="text-zinc-800 hover:text-zinc-950 transition-all active:scale-95"
+                                        className="text-zinc-950 hover:text-black transition-all active:scale-95"
                                     >
                                         <social.icon size={20} />
                                     </Link>
@@ -117,24 +112,21 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-16 md:mt-24 pt-8 border-t border-zinc-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                    <p className="text-zinc-700 text-[11px] font-bold uppercase tracking-wider">
+                    <p className="text-zinc-900 text-[11px] font-bold uppercase tracking-wider">
                         © {new Date().getFullYear()} Dairytrix. All rights reserved.
                     </p>
-                    <p className="text-zinc-700 text-[11px] font-bold uppercase tracking-wider md:text-right">
+                    <p className="text-zinc-900 text-[11px] font-bold uppercase tracking-wider md:text-right">
                         Designed for the future of Dairy Management.
                     </p>
                 </div>
             </div>
 
             {/* Foreground Image - Layered on top of everything including bottom bar */}
-            <div className="absolute inset-0 pointer-events-none z-20">
-                <Image
-                    src="/footer-foreground.svg"
-                    alt="Footer Foreground"
-                    fill
-                    className="object-cover object-top"
-                />
-            </div>
+            <img
+                src="/footer-foreground.svg"
+                alt="Footer Foreground"
+                className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none z-20"
+            />
         </footer>
     )
 }
