@@ -3,7 +3,7 @@ import Header from "../components/landing/Header";
 
 export default function Home() {
   return (
-    <main className="min-h-[200vh] bg-[#f1f0f1]">
+    <main className="min-h-[200vh] bg-[#f5f4f5]">
       <Header />
       <div className="relative">
         <Hero />
