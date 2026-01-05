@@ -25,7 +25,7 @@ const footerLinks = {
 export default function Footer() {
     return (
         <footer className={cn(
-            "relative w-full bg-white/50 pt-28 pb-16 md:pt-40 md:pb-20 overflow-hidden",
+            "relative w-full bg-white/50 pt-28 pb-16 md:pt-40 md:pb-20 xl:pt-64 xl:pb-32 2xl:pt-80 2xl:pb-40 overflow-hidden",
             GeistSans.className
         )}>
             {/* Background Image */}
@@ -36,10 +36,10 @@ export default function Footer() {
             />
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
 
                     {/* Brand Column */}
-                    <div className="md:col-span-1 flex flex-col gap-6">
+                    <div className="col-span-2 md:col-span-1 flex flex-col gap-6">
                         <Link href="/" className="flex items-center gap-2 w-fit">
                             <Image
                                 src="/logo.svg"
@@ -55,40 +55,43 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* Links Columns */}
-                    <div className="md:col-span-2 grid grid-cols-2 md:grid-cols-2 gap-8">
-                        <div className="flex flex-col gap-4">
-                            <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Solutions</h4>
-                            <div className="flex flex-col gap-3">
-                                {footerLinks.product.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Resources</h4>
-                            <div className="flex flex-col gap-3">
-                                {footerLinks.company.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </div>
+                    {/* Solutions Column */}
+                    <div className="col-span-1 md:col-span-1 flex flex-col gap-4">
+                        <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Solutions</h4>
+                        <div className="flex flex-col gap-3">
+                            {footerLinks.product.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Social/Status Column */}
-                    <div className="md:col-span-1 flex flex-col gap-6">
+                    {/* Spacer Column for Central Figure on Desktop */}
+                    <div className="hidden md:block col-span-1" />
+
+                    {/* Resources Column */}
+                    <div className="col-span-1 md:col-span-1 flex flex-col gap-4">
+                        <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Resources</h4>
+                        <div className="flex flex-col gap-3">
+                            {footerLinks.company.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-sm text-zinc-800 hover:text-zinc-950 transition-colors w-fit font-medium"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Social Column */}
+                    <div className="col-span-2 md:col-span-1 flex flex-col gap-6">
                         <div className="flex flex-col gap-4">
                             <h4 className="text-[10px] font-bold text-zinc-900 uppercase tracking-widest">Connect</h4>
                             <div className="flex gap-4">
@@ -103,7 +106,6 @@ export default function Footer() {
                                 ))}
                             </div>
                         </div>
-
                     </div>
                 </div>
 
