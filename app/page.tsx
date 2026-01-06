@@ -2,6 +2,7 @@ import Hero from "../components/landing/Hero";
 import Header from "../components/landing/Header";
 import FAQ from "../components/landing/FAQ";
 import Footer from "../components/landing/Footer";
+import Bridge from "../components/landing/Bridge";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="relative">
         <Hero />
       </div>
+      <Bridge />
       <FAQ />
       <Footer />
     </main>

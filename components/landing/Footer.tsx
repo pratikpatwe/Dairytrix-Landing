@@ -33,7 +33,7 @@ export default function Footer() {
             <img
                 src="/footer-bg.svg"
                 alt="Footer Background"
-                className="absolute inset-0 w-full h-full object-cover object-top blur-[2px] opacity-70 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-top blur-[2px] opacity-80 pointer-events-none"
             />
 
             {/* Ambient Rain Animation */}
