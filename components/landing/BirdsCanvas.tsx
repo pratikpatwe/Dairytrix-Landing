@@ -34,8 +34,8 @@ export default function BirdsCanvas() {
             boids.current = Array.from({ length: count }, () => ({
                 x: Math.random() * canvas.width,
                 y: Math.random() * (canvas.height * 0.7), // Spawn in upper 70%
-                vx: (Math.random() - 0.5) * 1,
-                vy: (Math.random() - 0.5) * 1,
+                vx: (Math.random() * 2) + 2,
+                vy: (Math.random() - 0.5) * 0.5,
                 angle: 0
             }))
         }
@@ -69,6 +69,12 @@ export default function BirdsCanvas() {
                 if (isMouseActive && dist < 500) {
                     b.vx += (dx / dist) * 0.12
                     b.vy += (dy / dist) * 0.12
+                }
+
+                // 2. Natural Flow (Left to Right) when idle
+                if (!isMouseActive) {
+                    b.vx += 0.03 // Constant wind to the right
+                    b.vy *= 0.98 // Stabilize vertical movement
                 }
 
                 // 2. Land Avoidance (Stay away from bottom 20%)
