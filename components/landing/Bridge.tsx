@@ -63,7 +63,7 @@ export default function Bridge() {
                                 Meet Dairytrix Bridge.
                             </h2>
                             <p className="text-zinc-600 text-lg md:text-xl leading-relaxed font-medium max-w-lg mx-auto md:mx-0">
-                                The industrial-grade IoT gateway that powers your entire collection center. Offline-ready, rugged, and instantly synced.
+                                Seamlessly connect your milk analyzers to the Dairytrix software. High-speed data transfer that simplifies milk logging and eliminates manual entry errors.
                             </p>
                         </div>
 
@@ -84,8 +84,8 @@ export default function Bridge() {
                                     <Layers size={20} />
                                 </div>
                                 <div className="text-left">
-                                    <h4 className="text-sm font-bold text-zinc-900">Seamless Orchestration</h4>
-                                    <p className="text-xs text-zinc-500 font-medium">Perfectly synced with Dairytrix ecosystem</p>
+                                    <h4 className="text-sm font-bold text-zinc-900">Direct Software Transfer</h4>
+                                    <p className="text-xs text-zinc-500 font-medium">Instantly pushes analyzer data to Dairytrix software</p>
                                 </div>
                             </div>
 
@@ -104,8 +104,8 @@ export default function Bridge() {
                                     <ShieldCheck size={20} />
                                 </div>
                                 <div className="text-left">
-                                    <h4 className="text-sm font-bold text-zinc-900">Industrial Rugged Design</h4>
-                                    <p className="text-xs text-zinc-500 font-medium">Built for tough dairy environments</p>
+                                    <h4 className="text-sm font-bold text-zinc-900">Simple Milk Logging</h4>
+                                    <p className="text-xs text-zinc-500 font-medium">Automate entries and eliminate manual paperwork</p>
                                 </div>
                             </div>
                         </div>
